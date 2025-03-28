@@ -1,12 +1,10 @@
 class Line:
     def __init__(self, point1, point2):
-        self.x1 = point1.x
-        self.y1 = point1.y
-        self.x2 = point2.x
-        self.y2 = point2.y
+        self.point1 = point1
+        self.point2 = point2
     
 
-    def draw(self, canvas, fill_color):
+    def draw(self, canvas, fill_color="black"):
         canvas.create_line(
-            self.x1, self.y1, self.x2, self.y2, fill=fill_color, width=2
+            self.point1.x, self.point1.y, self.point2.x, self.point2.y, fill=fill_color, width=2
         )

@@ -3,14 +3,12 @@ from tkinter import Tk, BOTH, Canvas
 
 class Window:
     def __init__(self, width, height):
-        self.width = width
-        self.height = height
         self.__root = Tk()
-        self.__root.title = "maze solver"
+        self.__root.title("maze solver")
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
-        self.canvas = Canvas()
-        self.canvas.pack()
-        self.is_running = False
+        self.__canvas = Canvas(self.__root, bg="white", height=height, width=width)
+        self.__canvas.pack(fill=BOTH, expand=1)
+        self.__is_running = False
 
 
     def redraw(self):
@@ -19,15 +17,14 @@ class Window:
 
 
     def wait_for_close(self):
-        self.is_running = True
-        while self.is_running:
+        self.__is_running = True
+        while self.__is_running:
             self.redraw()
 
 
     def close(self):
-        self.is_running = False
+        self.__is_running = False
 
 
     def draw_line(self, line, fill_color="black"):
-        line.draw(self.canvas, fill_color)
-        
+        line.draw(self.__canvas, fill_color)
